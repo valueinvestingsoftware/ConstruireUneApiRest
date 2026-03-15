@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 6 : Comprendre les API REST</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 6 : Comprendre les API REST</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Les API REST sont l’une des technologies les plus utilisées pour la communication
+entre les systèmes logiciels modernes. Elles permettent aux applications
+d’échanger des données de manière standardisée en utilisant le protocole HTTP.
+</p>
+
+<p>
+Comprendre le fonctionnement des API REST est essentiel pour les développeurs
+qui créent des applications web, des applications mobiles, des services cloud
+ou des intégrations entre systèmes.
+</p>
+
+<h2 class="section-title">Qu’est-ce qu’une API REST ?</h2>
+
+<p>
+Une API REST (Representational State Transfer Application Programming Interface)
+est une interface qui permet aux applications logicielles de communiquer entre
+elles en utilisant des requêtes HTTP.
+</p>
+
+<p>
+Au lieu d’interagir directement avec une base de données, les systèmes externes
+envoient des requêtes vers un point d’accès de l’API (endpoint). L’API traite la
+requête, récupère ou modifie les données, puis renvoie une réponse.
+</p>
+
+<div class="code-box">
+GET https://api.company.com/products
+</div>
+
+<p>
+Le serveur peut renvoyer une réponse JSON comme celle-ci :
+</p>
+
+<div class="code-box">
+[
+ { "id": 1, "name": "Laptop", "price": 950 },
+ { "id": 2, "name": "Keyboard", "price": 45 }
+]
+</div>
+
+<h2 class="section-title">Composants principaux d’une API REST</h2>
+
+<ul>
+<li><strong>Client :</strong> L’application qui envoie la requête (navigateur, application mobile, système).</li>
+<li><strong>Serveur :</strong> Le système qui traite la requête et renvoie une réponse.</li>
+<li><strong>Endpoint :</strong> L’URL où l’API peut être accessible.</li>
+<li><strong>Méthodes HTTP :</strong> Actions effectuées sur les ressources telles que GET, POST, PUT et DELETE.</li>
+<li><strong>Format des données :</strong> La plupart des API renvoient les données au format JSON.</li>
+</ul>
+
+<h2 class="section-title">Ressources et Endpoints</h2>
+
+<p>
+Dans l’architecture REST, tout est considéré comme une <strong>ressource</strong>.
+Une ressource peut représenter un client, un produit, une commande ou toute
+autre entité de données.
+</p>
+
+<p>
+Les ressources sont accessibles via des endpoints tels que :
+</p>
+
+<div class="code-box">
+https://api.company.com/customers
+</div>
+
+<p>
+Chaque endpoint représente une collection ou une ressource spécifique
+au sein du système.
+</p>
+
+<h2 class="section-title">Méthodes HTTP courantes utilisées dans les API REST</h2>
+
+<ul>
+<li><strong>GET</strong> – Récupérer des informations depuis le serveur</li>
+<li><strong>POST</strong> – Créer de nouveaux enregistrements</li>
+<li><strong>PUT</strong> – Mettre à jour des enregistrements existants</li>
+<li><strong>DELETE</strong> – Supprimer des enregistrements</li>
+</ul>
+
+<p>
+Ces méthodes permettent aux clients d’effectuer des opérations sur les
+ressources tout en maintenant une structure d’API claire et cohérente.
+</p>
+
+<h2 class="section-title">Pourquoi les API REST sont si populaires</h2>
+
+<ul>
+<li>Elles sont simples et faciles à implémenter</li>
+<li>Elles fonctionnent avec presque tous les langages de programmation</li>
+<li>Elles sont évolutives et efficaces</li>
+<li>Elles permettent l’intégration entre différents systèmes</li>
+<li>Elles constituent la base des services web modernes</li>
+</ul>
+
+<p>
+Grâce à ces avantages, les API REST sont utilisées dans les services cloud,
+les applications mobiles, les plateformes de commerce électronique,
+les systèmes financiers et de nombreuses autres technologies modernes.
+</p>
+
+<h2 class="section-title">Ce que vous allez faire ensuite</h2>
+
+<p>
+Dans les prochaines leçons, vous commencerez à explorer comment configurer
+un environnement de développement d’API REST, créer des projets d’API,
+définir des modèles et commencer à implémenter de véritables endpoints
+qui interagissent avec une base de données.
+</p>
+
+<p>
+Cette approche pratique vous aidera à passer de la compréhension
+de la théorie des API REST à la création de vos propres API
+entièrement fonctionnelles.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Lecture 6 – Cours de Développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
