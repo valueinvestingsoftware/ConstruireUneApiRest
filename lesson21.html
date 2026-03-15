@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 21 : Définir des routes personnalisées dans les méthodes GET</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 21 : Définir des routes personnalisées dans les méthodes GET</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Dans le développement d’API REST, les méthodes GET sont utilisées pour récupérer des ressources. 
+Alors que les routes GET standard permettent une récupération basique par identifiant ou 
+l’affichage de tous les éléments, définir des routes personnalisées donne à votre API 
+plus de flexibilité et de puissance.
+</p>
+
+<h2 class="section-title">Pourquoi utiliser des routes GET personnalisées ?</h2>
+
+<p>
+Les routes personnalisées permettent aux clients d’accéder à des données spécifiques ou 
+d’effectuer des requêtes complexes sans nécessiter plusieurs étapes de filtrage côté client.
+</p>
+
+<ul>
+<li>Fournir des endpoints pour des requêtes spécifiques</li>
+<li>Organiser les ressources dans une structure logique</li>
+<li>Réduire le filtrage et le traitement des données côté client</li>
+<li>Améliorer l’utilisabilité et la clarté de l’API</li>
+</ul>
+
+<h2 class="section-title">Exemple : route GET personnalisée</h2>
+
+<p>
+Supposons que vous ayez une API de produits. Une route personnalisée peut retourner 
+uniquement les produits actifs dans une catégorie :
+</p>
+
+<div class="code-box">
+GET /api/products/active/electronics
+</div>
+
+<p>
+Ici, <code>active</code> et <code>electronics</code> font partie de la route, permettant au serveur 
+de retourner directement des données filtrées.
+</p>
+
+<h2 class="section-title">Implémentation de routes personnalisées dans ASP.NET Core</h2>
+
+<p>
+Dans ASP.NET Core, vous pouvez définir des routes GET personnalisées en utilisant le routage par attribut :
+</p>
+
+<div class="code-box">
+[HttpGet("active/{category}")]
+public IActionResult GetActiveProducts(string category)
+{
+    var products = _db.Products
+                      .Where(p => p.IsActive && p.Category == category)
+                      .ToList();
+    return Ok(products);
+}
+</div>
+
+<p>
+Cette approche associe automatiquement l’URL <code>/api/products/active/electronics</code> 
+à la méthode <code>GetActiveProducts</code>.
+</p>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Garder les routes intuitives et descriptives</li>
+<li>Utiliser des noms pour les ressources et éviter les verbes dans les routes</li>
+<li>Documenter clairement toutes les routes personnalisées pour les utilisateurs de l’API</li>
+<li>S’assurer que les paramètres de route sont validés</li>
+</ul>
+
+<h2 class="section-title">Conclusion</h2>
+
+<p>
+Définir des routes personnalisées dans les méthodes GET rend votre API REST plus flexible 
+et plus facile à utiliser pour les clients. Cela permet au serveur de gérer efficacement 
+des requêtes complexes tout en gardant une structure d’API organisée et logique.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 21 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
