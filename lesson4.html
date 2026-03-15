@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leçon 4 : Introduction aux fondamentaux des API REST</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Leçon 4 : Introduction aux fondamentaux des API REST</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Avant de créer une API REST, il est essentiel de comprendre les principes
+fondamentaux qui définissent le fonctionnement des systèmes basés sur REST.
+Les API REST sont construites au-dessus du protocole HTTP et fournissent
+une manière standardisée permettant aux applications de communiquer sur le web.
+</p>
+
+<h2 class="section-title">Que signifie REST ?</h2>
+
+<p>
+REST signifie <strong>Representational State Transfer</strong>. Il s’agit d’un style
+d’architecture qui définit comment les systèmes doivent interagir en utilisant
+une communication sans état, des méthodes HTTP standard et des ressources structurées.
+</p>
+
+<p>
+Dans l’architecture REST, tout est traité comme une <strong>ressource</strong>.
+Une ressource peut représenter de nombreuses choses, par exemple :
+</p>
+
+<ul>
+<li>Un client</li>
+<li>Un produit</li>
+<li>Une commande</li>
+<li>Un enregistrement de base de données</li>
+</ul>
+
+<p>
+Chaque ressource est accessible via une URL unique appelée <strong>endpoint</strong>.
+</p>
+
+<div class="code-box">
+https://api.company.com/products
+</div>
+
+<h2 class="section-title">Principes clés des API REST</h2>
+
+<ul>
+<li><strong>Communication sans état :</strong> Chaque requête contient toutes les informations nécessaires pour que le serveur puisse la traiter.</li>
+<li><strong>Architecture client-serveur :</strong> Le client gère l’interface utilisateur tandis que le serveur gère les données et la logique.</li>
+<li><strong>Interface uniforme :</strong> Les API suivent des règles cohérentes pour les requêtes et les réponses.</li>
+<li><strong>Conception basée sur les ressources :</strong> Les API exposent des ressources plutôt que des actions.</li>
+<li><strong>Utilisation des méthodes HTTP standard :</strong> Les API utilisent des verbes HTTP tels que GET, POST, PUT et DELETE.</li>
+</ul>
+
+<h2 class="section-title">Exemple de requête d’API REST</h2>
+
+<p>
+Lorsqu’une application cliente demande des données à une API REST,
+elle envoie généralement une requête HTTP vers un endpoint.
+Le serveur traite la requête et renvoie une réponse,
+souvent au format JSON.
+</p>
+
+<div class="code-box">
+GET https://api.company.com/customers
+</div>
+
+<p>
+Exemple de réponse JSON :
+</p>
+
+<div class="code-box">
+[
+ { "id": 1, "name": "Maria Lopez" },
+ { "id": 2, "name": "David Smith" }
+]
+</div>
+
+<h2 class="section-title">Pourquoi les API REST sont largement utilisées</h2>
+
+<ul>
+<li>Elles sont simples et faciles à implémenter</li>
+<li>Elles fonctionnent avec de nombreux langages de programmation</li>
+<li>Elles s’intègrent facilement aux applications mobiles, sites web et services cloud</li>
+<li>Elles utilisent les protocoles HTTP standard déjà pris en charge par le web</li>
+</ul>
+
+<p>
+Grâce à ces avantages, les API REST sont devenues la méthode la plus courante
+pour permettre aux applications d’échanger des données et de s’intégrer
+à des services externes.
+</p>
+
+<h2 class="section-title">Ce qui vient ensuite</h2>
+
+<p>
+Dans les prochaines leçons, vous explorerez plus en détail le fonctionnement
+de HTTP, la structure interne des API REST et comment commencer à créer
+votre propre API à l’aide d’exemples pratiques et d’outils tels que
+Visual Studio et Postman.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Retour à la page du cours
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 4 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
