@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 22 : Différences entre PUT et PATCH dans les API REST</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 22 : Différences entre PUT et PATCH dans les API REST</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Dans le développement d’API REST, les méthodes <strong>PUT</strong> et <strong>PATCH</strong> sont utilisées pour mettre à jour des ressources,
+mais elles fonctionnent différemment et servent des objectifs distincts.
+</p>
+
+<h2 class="section-title">Méthode PUT</h2>
+
+<p>
+La méthode PUT est utilisée pour des **mises à jour complètes** d’une ressource. Lorsqu’un client envoie une requête PUT,
+il remplace entièrement la ressource avec les nouvelles données fournies.
+</p>
+
+<div class="code-box">
+PUT /api/products/45
+{
+  "name": "New Product Name",
+  "price": 99.99,
+  "category": "Electronics",
+  "stock": 50
+}
+</div>
+
+<p>
+Tous les champs doivent être inclus, même si certaines valeurs restent inchangées, car la ressource
+est complètement remplacée.
+</p>
+
+<h2 class="section-title">Méthode PATCH</h2>
+
+<p>
+La méthode PATCH est utilisée pour des **mises à jour partielles**. Elle permet de modifier uniquement certains champs
+sans affecter le reste de la ressource.
+</p>
+
+<div class="code-box">
+PATCH /api/products/45
+{
+  "price": 79.99,
+  "stock": 60
+}
+</div>
+
+<p>
+Dans cet exemple, seuls les champs <code>price</code> et <code>stock</code> sont mis à jour, tandis que tous
+les autres champs restent inchangés.
+</p>
+
+<h2 class="section-title">Principales différences</h2>
+
+<ul>
+<li><strong>PUT :</strong> Remplacement complet de la ressource, tous les champs sont requis.</li>
+<li><strong>PATCH :</strong> Mise à jour partielle, seuls les champs à modifier sont nécessaires.</li>
+<li><strong>PUT :</strong> Écrase complètement la ressource.</li>
+<li><strong>PATCH :</strong> Met à jour uniquement les champs spécifiés.</li>
+<li><strong>Cas d’utilisation :</strong> PUT pour remplacer des ressources, PATCH pour des mises à jour rapides ou des modifications mineures.</li>
+</ul>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Utiliser PUT lorsque le client possède la représentation complète de la ressource.</li>
+<li>Utiliser PATCH pour des mises à jour incrémentales afin de réduire le transfert de données et les erreurs potentielles.</li>
+<li>Documenter clairement quels endpoints prennent en charge PUT ou PATCH.</li>
+<li>Valider les entrées pour éviter des écrasements de données involontaires.</li>
+</ul>
+
+<h2 class="section-title">Conclusion</h2>
+
+<p>
+Comprendre les différences entre PUT et PATCH garantit une conception correcte de l’API,
+évite les pertes accidentelles de données et améliore les interactions entre le client et le serveur.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 22 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
