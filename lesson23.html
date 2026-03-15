@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 23 : Prévenir les enregistrements en double dans les opérations POST des API REST</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 23 : Prévenir les enregistrements en double dans les opérations POST des API REST</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Lors de l'utilisation de la méthode <strong>POST</strong> pour créer de nouvelles ressources, il est essentiel de prévenir les enregistrements en double.
+Les entrées dupliquées peuvent compromettre l’intégrité des données et provoquer un comportement inattendu dans votre API.
+</p>
+
+<h2 class="section-title">Stratégies pour éviter les doublons</h2>
+
+<ul>
+<li>Valider les données entrantes côté serveur avant l’insertion</li>
+<li>Utiliser des contraintes d’unicité sur les colonnes de la base de données</li>
+<li>Vérifier l’existence d’enregistrements avec les mêmes attributs clés</li>
+<li>Retourner des messages d’erreur informatifs lorsque des doublons sont détectés</li>
+</ul>
+
+<h2 class="section-title">Exemple : validation côté serveur</h2>
+
+<p>
+Avant d’ajouter un nouveau produit, vérifiez si un produit avec le même nom existe déjà :
+</p>
+
+<div class="code-box">
+POST /api/products
+{
+  "name": "Smartphone X",
+  "price": 499.99,
+  "category": "Electronics"
+}
+
+// Pseudocode côté serveur :
+if(db.Products.Any(p => p.Name == newProduct.Name)) {
+    return Conflict("Product already exists");
+}
+else {
+    db.Products.Add(newProduct);
+    db.SaveChanges();
+    return Created(newProduct);
+}
+</div>
+
+<h2 class="section-title">Contraintes au niveau de la base de données</h2>
+
+<p>
+L’implémentation de contraintes d’unicité sur les colonnes de la base de données (par exemple le nom du produit ou le SKU)
+garantit que les doublons sont empêchés au niveau du stockage des données, même si la logique de l’application échoue.
+</p>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Combiner les vérifications au niveau de l’application avec les contraintes de base de données pour une sécurité maximale</li>
+<li>Toujours retourner des codes de statut clairs (par exemple 409 Conflict) lorsque des doublons sont détectés</li>
+<li>Documenter les endpoints POST pour indiquer quels champs doivent être uniques</li>
+<li>Utiliser la journalisation (logging) pour surveiller les tentatives de duplication et comprendre les modèles d’utilisation</li>
+</ul>
+
+<h2 class="section-title">Conclusion</h2>
+
+<p>
+La prévention des enregistrements en double est essentielle pour maintenir l’intégrité des données et fournir une API REST fiable.
+Une validation appropriée, des contraintes de base de données et une gestion claire des erreurs sont des éléments clés de ce processus.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 23 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
