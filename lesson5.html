@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 5 : L’histoire et l’importance de HTTP</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 5 : L’histoire et l’importance de HTTP</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Pour comprendre comment fonctionnent les API REST, il est essentiel de comprendre
+le protocole qui les rend possibles : <strong>HTTP (Hypertext Transfer Protocol)</strong>.
+HTTP est la base de la communication sur le web et est utilisé par les navigateurs,
+les serveurs et les API pour échanger des informations.
+</p>
+
+<h2 class="section-title">Origines de HTTP</h2>
+
+<p>
+HTTP a été créé au début des années 1990 par <strong>Tim Berners-Lee</strong>, l’inventeur
+du World Wide Web. L’objectif était de créer un protocole simple permettant
+aux clients (comme les navigateurs web) de demander des documents à des serveurs
+via Internet.
+</p>
+
+<p>
+La première version de HTTP était très simple et ne permettait que la récupération
+de documents de base. Cependant, avec l’expansion du web, le protocole a évolué
+pour prendre en charge des communications plus complexes entre les systèmes.
+</p>
+
+<h2 class="section-title">Évolution de HTTP</h2>
+
+<ul>
+<li><strong>HTTP/0.9 :</strong> La première version, prenant en charge uniquement les requêtes GET basiques.</li>
+<li><strong>HTTP/1.0 :</strong> Introduction des en-têtes et amélioration de la communication entre clients et serveurs.</li>
+<li><strong>HTTP/1.1 :</strong> Ajout des connexions persistantes, des mécanismes de cache et de meilleures performances.</li>
+<li><strong>HTTP/2 :</strong> Amélioration de l’efficacité grâce au multiplexage et à un transfert de données plus rapide.</li>
+<li><strong>HTTP/3 :</strong> Introduit des améliorations supplémentaires de performance grâce à des protocoles de transport modernes.</li>
+</ul>
+
+<p>
+Aujourd’hui, la plupart des API REST fonctionnent avec HTTP/1.1 ou HTTP/2.
+</p>
+
+<h2 class="section-title">Comment fonctionne HTTP</h2>
+
+<p>
+HTTP suit un <strong>modèle requête-réponse</strong>. Un client envoie une requête à un serveur,
+et le serveur traite la requête puis renvoie une réponse.
+</p>
+
+<div class="code-box">
+GET /products HTTP/1.1
+Host: api.company.com
+</div>
+
+<p>
+Le serveur traite la requête et peut renvoyer une réponse telle que :
+</p>
+
+<div class="code-box">
+HTTP/1.1 200 OK
+Content-Type: application/json
+</div>
+
+<p>
+Accompagnée du corps de la réponse contenant les données.
+</p>
+
+<h2 class="section-title">HTTP et les API REST</h2>
+
+<p>
+Les API REST reposent fortement sur HTTP car il fournit des méthodes
+standardisées pour effectuer des opérations sur les ressources.
+</p>
+
+<ul>
+<li><strong>GET</strong> – Récupérer des données</li>
+<li><strong>POST</strong> – Créer de nouvelles données</li>
+<li><strong>PUT</strong> – Mettre à jour des données existantes</li>
+<li><strong>DELETE</strong> – Supprimer des données</li>
+</ul>
+
+<p>
+Ces méthodes permettent aux API d’exposer des opérations structurées tout en
+maintenant une interface claire et prévisible.
+</p>
+
+<h2 class="section-title">Pourquoi HTTP est essentiel pour les API</h2>
+
+<ul>
+<li>Il est universellement supporté par les technologies web</li>
+<li>Il permet la communication entre différentes plateformes</li>
+<li>Il fournit des structures standardisées pour les requêtes et les réponses</li>
+<li>Il permet des architectures web évolutives</li>
+</ul>
+
+<p>
+Sans HTTP, les services web modernes et les API REST ne pourraient pas
+communiquer efficacement sur Internet.
+</p>
+
+<h2 class="section-title">Étapes suivantes</h2>
+
+<p>
+Maintenant que vous comprenez l’histoire et le rôle de HTTP, la prochaine étape
+consiste à explorer comment les API REST utilisent les principes HTTP pour
+exposer des ressources et des services. Comprendre cette relation est essentiel
+avant de commencer à construire votre propre API.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Lecture 5 – Cours de Développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
