@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 18: Restauration d’une base de données avec des données préchargées</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 18: Restauration d’une base de données avec des données préchargées</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Dans le développement d’API REST, travailler avec une base de données correctement structurée est essentiel.
+Pendant le développement et les tests, il est souvent utile de restaurer une base de données qui contient déjà
+des données d’exemple ou préchargées. Cela permet aux développeurs de tester les points d’accès de l’API
+sans avoir à insérer manuellement des enregistrements à chaque fois.
+</p>
+
+<h2 class="section-title">Pourquoi utiliser une sauvegarde de base de données ?</h2>
+
+<p>
+Un fichier de sauvegarde de base de données permet aux développeurs de recréer rapidement un environnement fonctionnel
+avec des tables, des relations et des données de test déjà configurées.
+</p>
+
+<p>Les avantages incluent :</p>
+
+<ul>
+<li>Développement et tests plus rapides</li>
+<li>Données cohérentes pour les démonstrations d’API</li>
+<li>Possibilité de reproduire des problèmes lors du débogage</li>
+<li>Configuration simplifiée pour les nouveaux développeurs</li>
+</ul>
+
+<h2 class="section-title">Format courant de sauvegarde de base de données</h2>
+
+<p>
+Dans les environnements SQL Server, les bases de données sont souvent distribuées sous forme de fichiers de sauvegarde
+avec l’extension <strong>.bak</strong>.
+</p>
+
+<div class="code-box">
+Example file: RestApiSampleDatabase.bak
+</div>
+
+<p>
+Ce fichier contient la structure de la base de données, les tables, les relations et
+les enregistrements préchargés nécessaires au bon fonctionnement de l’API.
+</p>
+
+<h2 class="section-title">Restaurer la base de données dans SQL Server</h2>
+
+<p>
+Pour restaurer une base de données en utilisant SQL Server Management Studio (SSMS),
+les développeurs peuvent suivre les étapes suivantes :
+</p>
+
+<ul>
+<li>Ouvrir SQL Server Management Studio</li>
+<li>Cliquer avec le bouton droit sur le dossier "Databases"</li>
+<li>Sélectionner "Restore Database"</li>
+<li>Choisir le fichier de sauvegarde (.bak)</li>
+<li>Confirmer l’opération de restauration</li>
+</ul>
+
+<p>
+Une fois restaurée, la base de données devient disponible pour que l’API puisse s’y connecter.
+</p>
+
+<h2 class="section-title">Connexion de l’API REST à la base de données</h2>
+
+<p>
+Après la restauration de la base de données, l’API doit être configurée pour utiliser la chaîne de connexion correcte.
+</p>
+
+<div class="code-box">
+"ConnectionStrings": {
+ "DefaultConnection":
+ "Server=localhost;Database=RestApiDB;Trusted_Connection=True;"
+}
+</div>
+
+<p>
+Cette configuration permet à l’API d’interagir avec la base de données restaurée
+et d’accéder aux données préchargées.
+</p>
+
+<h2 class="section-title">Tester les endpoints de l’API avec des données d’exemple</h2>
+
+<p>
+Une fois la base de données restaurée et l’API connectée, les développeurs peuvent
+tester des endpoints tels que :
+</p>
+
+<ul>
+<li>GET – Récupérer des enregistrements existants</li>
+<li>POST – Insérer de nouveaux enregistrements</li>
+<li>PUT – Mettre à jour des enregistrements</li>
+<li>DELETE – Supprimer des enregistrements</li>
+</ul>
+
+<p>
+Avoir des données préchargées garantit que les requêtes GET renvoient des résultats pertinents
+pendant les tests.
+</p>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Conserver une version de sauvegarde propre pour le développement</li>
+<li>Documenter le schéma de la base de données</li>
+<li>Éviter d’utiliser des données de production dans les environnements de développement</li>
+<li>Mettre à jour les fichiers de sauvegarde lorsque le schéma change</li>
+</ul>
+
+<p>
+Suivre ces pratiques permet de maintenir des environnements de développement d’API
+stables et prévisibles.
+</p>
+
+<h2 class="section-title">Conclusion</h2>
+
+<p>
+La restauration d’une base de données avec des données préchargées accélère considérablement
+le développement et les tests des API REST. Elle garantit que les développeurs peuvent
+immédiatement interagir avec des données pertinentes lors de la création et du débogage
+de leurs endpoints.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Lecture 18 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
