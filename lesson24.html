@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 24 : Filtrage GET avancé avec règles métier</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 24 : Filtrage GET avancé avec règles métier</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Dans cette leçon, nous explorons des techniques avancées pour filtrer les requêtes GET en utilisant des <strong>règles métier</strong>.
+Ces méthodes permettent à votre API de retourner des ensembles de données très spécifiques adaptés aux besoins du client.
+</p>
+
+<h2 class="section-title">Pourquoi le filtrage avancé est important</h2>
+
+<p>
+Les requêtes GET de base peuvent retourner tous les enregistrements ou appliquer des filtres simples par ID ou par catégorie.
+Le filtrage avancé permet à votre API d’appliquer la logique métier et de réduire les transferts de données inutiles.
+</p>
+
+<ul>
+<li>Appliquer les règles métier directement sur le serveur</li>
+<li>Réduire le traitement côté client en retournant uniquement les données pertinentes</li>
+<li>Améliorer les performances de l’API et les temps de réponse</li>
+<li>Fournir des résultats plus utiles et exploitables aux clients</li>
+</ul>
+
+<h2 class="section-title">Exemple : Filtrage avec des règles métier</h2>
+
+<p>
+Supposons que vous disposiez d’une API de commerce électronique. Vous pouvez filtrer les produits selon le stock, la catégorie et
+l’éligibilité aux remises dans une seule requête GET :
+</p>
+
+<div class="code-box">
+GET /api/products?category=electronics&inStock=true&discountEligible=true
+</div>
+
+<p>
+Cette requête retourne uniquement les produits électroniques qui sont en stock et éligibles aux remises,
+permettant au client d’afficher immédiatement les produits pertinents.
+</p>
+
+<h2 class="section-title">Implémentation du filtrage GET avancé dans ASP.NET Core</h2>
+
+<div class="code-box">
+[HttpGet]
+public IActionResult GetProducts([FromQuery] string category, [FromQuery] bool inStock, [FromQuery] bool discountEligible)
+{
+    var products = _db.Products.AsQueryable();
+
+    if(!string.IsNullOrEmpty(category))
+        products = products.Where(p => p.Category == category);
+
+    if(inStock)
+        products = products.Where(p => p.Stock > 0);
+
+    if(discountEligible)
+        products = products.Where(p => p.IsDiscountEligible);
+
+    return Ok(products.ToList());
+}
+</div>
+
+<p>
+L’utilisation de paramètres de requête et d’un filtrage conditionnel garantit que l’API applique efficacement les règles métier.
+</p>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Utiliser des paramètres de requête pour les filtres optionnels</li>
+<li>Conserver la logique de filtrage côté serveur pour maintenir la cohérence des données</li>
+<li>Documenter tous les filtres disponibles et leurs effets</li>
+<li>Tester différentes combinaisons de filtres pour garantir des résultats corrects</li>
+</ul>
+
+<h2 class="section-title">Conclusion</h2>
+
+<p>
+Le filtrage GET avancé permet à votre API de retourner des résultats précis basés sur des règles.
+La mise en œuvre de ces techniques améliore les performances, applique la logique métier et améliore l’expérience client.
+</p>
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 24 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
