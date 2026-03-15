@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 14 : Optimisation de la méthode GET : retourner uniquement les résultats nécessaires</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 14 : Optimisation de la méthode GET : retourner uniquement les résultats nécessaires</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Lors de la conception d’API REST, les performances et l’efficacité sont extrêmement importantes.
+Une technique d’optimisation courante consiste à s’assurer que les endpoints de l’API renvoient
+<strong>uniquement les données dont les clients ont réellement besoin</strong>.
+</p>
+
+<p>
+Renvoyer des données inutiles augmente la taille de la réponse, ralentit les applications
+et consomme des ressources réseau supplémentaires. Optimiser les requêtes GET aide
+à créer des API plus rapides et plus évolutives.
+</p>
+
+<h2 class="section-title">Le problème de retourner trop de données</h2>
+
+<p>
+De nombreuses API renvoient initialement des objets complets contenant tous les champs disponibles.
+Bien que cela puisse être pratique pendant le développement, cela peut entraîner des réponses
+inefficaces lorsque le client n’a besoin que de quelques propriétés.
+</p>
+
+<p>Exemple d’une réponse volumineuse :</p>
+
+<div class="code-box">
+{
+ "id": 1,
+ "name": "Laptop",
+ "price": 1200,
+ "description": "High performance laptop",
+ "supplier": "TechCorp",
+ "warehouseLocation": "A12",
+ "internalNotes": "Reserved stock"
+}
+</div>
+
+<p>
+Si le client n’a besoin que du nom du produit et du prix, renvoyer tous les champs
+est inutile.
+</p>
+
+<h2 class="section-title">Retourner uniquement les champs nécessaires</h2>
+
+<p>
+Une meilleure approche consiste à renvoyer uniquement les champs nécessaires au client.
+Cela peut être réalisé en utilisant des projections ou des objets de transfert de données (DTO).
+</p>
+
+<p>Exemple de réponse optimisée :</p>
+
+<div class="code-box">
+{
+ "name": "Laptop",
+ "price": 1200
+}
+</div>
+
+<p>
+Cette réponse plus petite réduit l’utilisation de la bande passante et améliore le temps de réponse.
+</p>
+
+<h2 class="section-title">Optimisation des requêtes de base de données</h2>
+
+<p>
+L’efficacité doit également être prise en compte lors de la récupération des données
+depuis la base de données. Au lieu de charger des enregistrements complets puis de filtrer,
+il est préférable de sélectionner uniquement les colonnes nécessaires directement dans la requête.
+</p>
+
+<div class="code-box">
+SELECT Name, Price
+FROM Products
+</div>
+
+<p>
+Cela réduit l’utilisation de la mémoire et améliore les performances des requêtes.
+</p>
+
+<h2 class="section-title">Pagination pour les grands ensembles de données</h2>
+
+<p>
+Une autre technique d’optimisation pour les requêtes GET est la pagination.
+Au lieu de renvoyer des milliers d’enregistrements dans une seule réponse,
+l’API renvoie les données en pages plus petites.
+</p>
+
+<p>Exemple de requête avec pagination :</p>
+
+<div class="code-box">
+GET /api/products?page=1&pageSize=20
+</div>
+
+<p>
+Cette approche améliore les performances et rend les API plus évolutives.
+</p>
+
+<h2 class="section-title">Avantages de l’optimisation des requêtes GET</h2>
+
+<ul>
+<li>Temps de réponse plus rapides</li>
+<li>Réduction de l’utilisation de la bande passante</li>
+<li>Meilleure évolutivité</li>
+<li>Meilleures performances côté client</li>
+</ul>
+
+<h2 class="section-title">Bonnes pratiques</h2>
+
+<ul>
+<li>Retourner uniquement les champs nécessaires</li>
+<li>Utiliser des DTO pour les modèles de réponse</li>
+<li>Implémenter la pagination pour les grands ensembles de données</li>
+<li>Optimiser les requêtes de base de données</li>
+</ul>
+
+<p>
+Ces pratiques permettent de garantir que les API REST restent efficaces,
+maintenables et capables de gérer un grand nombre de requêtes.
+</p>
+
+<h2 class="section-title">Étapes suivantes</h2>
+
+<p>
+Une fois les méthodes GET optimisées, l’étape suivante consiste à continuer
+à implémenter d’autres méthodes HTTP et à affiner les endpoints de l’API
+afin de prendre en charge des opérations CRUD complètes.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Lecture 14 – Cours de Développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
