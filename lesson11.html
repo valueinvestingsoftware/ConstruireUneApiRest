@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lecture 11 : L’Histoire et l’Importance de JSON</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Lecture 11 : L’Histoire et l’Importance de JSON</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+JSON (JavaScript Object Notation) est l’un des formats de données les plus utilisés
+pour la communication entre systèmes. Dans le développement d’API REST, JSON joue
+un rôle essentiel car il permet aux serveurs et aux clients d’échanger des données
+structurées de manière simple et efficace.
+</p>
+
+<h2 class="section-title">Qu’est-ce que JSON ?</h2>
+
+<p>
+JSON est un format d’échange de données léger qui est facile à lire et à écrire
+pour les humains, et facile à analyser et générer pour les machines.
+</p>
+
+<p>
+Il représente les données sous forme de paires clé-valeur et d’objets structurés.
+</p>
+
+<p>Exemple de structure JSON :</p>
+
+<div class="code-box">
+{
+  "id": 1,
+  "name": "Laptop",
+  "price": 1200
+}
+</div>
+
+<p>
+Cette structure permet aux applications d’envoyer et de recevoir facilement
+des données via les endpoints d’API REST.
+</p>
+
+<h2 class="section-title">L’Histoire de JSON</h2>
+
+<p>
+JSON a été développé au début des années 2000 comme une alternative légère
+à XML pour l’échange de données entre applications web.
+</p>
+
+<p>
+À cette époque, XML était couramment utilisé mais était souvent considéré
+comme trop verbeux et complexe. JSON proposait un format beaucoup plus
+simple et compact qui fonctionnait naturellement avec les applications
+basées sur JavaScript.
+</p>
+
+<p>
+Avec le temps, JSON est devenu le format préféré pour les services web
+modernes, en particulier pour les API REST.
+</p>
+
+<h2 class="section-title">Pourquoi JSON est Devenu la Norme</h2>
+
+<ul>
+<li>Simple et facile à lire</li>
+<li>Léger et efficace</li>
+<li>Facile à analyser dans la plupart des langages de programmation</li>
+<li>Largement pris en charge sur différentes plateformes</li>
+</ul>
+
+<p>
+Grâce à ces avantages, JSON a rapidement remplacé XML dans de nombreux
+systèmes de communication basés sur les API.
+</p>
+
+<h2 class="section-title">JSON dans les API REST</h2>
+
+<p>
+Dans le développement d’API REST, JSON est généralement utilisé comme
+format pour les réponses renvoyées par le serveur.
+</p>
+
+<p>Exemple de requête API :</p>
+
+<div class="code-box">
+GET /api/products
+</div>
+
+<p>Réponse du serveur :</p>
+
+<div class="code-box">
+[
+ {
+   "id": 1,
+   "name": "Keyboard",
+   "price": 45
+ },
+ {
+   "id": 2,
+   "name": "Mouse",
+   "price": 25
+ }
+]
+</div>
+
+<p>
+Les clients tels que les applications mobiles, les applications web
+ou d’autres services peuvent facilement lire ces données et les afficher
+ou les traiter.
+</p>
+
+<h2 class="section-title">JSON vs XML</h2>
+
+<p>
+Bien que XML soit encore utilisé dans certains systèmes, JSON est devenu
+le format dominant pour les API modernes.
+</p>
+
+<ul>
+<li>JSON est plus compact</li>
+<li>JSON est plus facile à lire</li>
+<li>JSON nécessite moins de bande passante</li>
+<li>JSON s’intègre naturellement avec JavaScript</li>
+</ul>
+
+<h2 class="section-title">Pourquoi JSON est Important pour les Développeurs d’API</h2>
+
+<p>
+Comprendre JSON est essentiel pour toute personne qui développe ou utilise
+des API REST. Presque toutes les API modernes utilisent JSON pour envoyer
+et recevoir des données, ce qui en fait une compétence fondamentale
+pour les développeurs backend.
+</p>
+
+<h2 class="section-title">Prochaines Étapes</h2>
+
+<p>
+Maintenant que nous comprenons l’importance de JSON, la prochaine étape
+consiste à implémenter des réponses JSON dans nos contrôleurs d’API REST
+afin que les clients puissent interagir efficacement avec le système.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Back to Course Page
+</a>
+
+</div>
+
+<div class="footer">
+Lecture 11 – Cours de Développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
