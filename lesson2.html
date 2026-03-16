@@ -12,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leçon 1 : Pourquoi utiliser une API REST ?</title>
+<title>Lezione 2: Panoramica di ciò che verrà appreso</title>
 
 <style>
 
@@ -118,98 +118,84 @@ color:#7b8a97;
 <div class="container">
 <div class="card">
 
-<h1>Leçon 1 : Pourquoi utiliser une API REST ?</h1>
+<h1>Lezione 2: Panoramica di ciò che verrà appreso</h1>
 
 <p class="subtitle">
-Développement d’API REST : Construire, Tester, Dépanner
+Sviluppo REST API: Costruire, Testare, Risolvere Problemi
 </p>
 
 <p>
-Les systèmes logiciels modernes fonctionnent rarement de manière isolée. Les applications doivent souvent
-communiquer avec d'autres systèmes, des applications mobiles, des interfaces web et des services externes.
-C’est là que les <strong>API REST</strong> deviennent essentielles.
+Prima di iniziare a costruire API, è importante comprendere cosa imparerai durante questo corso.
+Lo sviluppo di REST API non riguarda solo la scrittura di codice — implica comprendere HTTP,
+strutturare gli endpoint, gestire correttamente i dati, testare le API e risolvere i problemi in modo efficiente.
 </p>
 
-<h2 class="section-title">Qu'est-ce qu'une API REST ?</h2>
+<h2 class="section-title">Obiettivo del corso</h2>
 
 <p>
-Une API REST (Representational State Transfer Application Programming Interface)
-est une méthode standardisée permettant aux applications de communiquer via HTTP.
-Elle permet à différents systèmes d’échanger des données à l’aide de requêtes et de réponses simples,
-généralement formatées en JSON.
+L'obiettivo di questo corso è aiutarti a costruire una comprensione completa delle REST API,
+dai fondamenti allo sviluppo pratico e ai test. Alla fine del corso sarai in grado di creare
+la tua REST API, collegarla alle applicazioni e diagnosticare problemi comuni che si verificano
+nei sistemi reali.
+</p>
+
+<h2 class="section-title">Argomenti principali trattati</h2>
+
+<ul>
+<li>Comprendere i fondamenti di HTTP e come funziona la comunicazione web</li>
+<li>Imparare i principi alla base dell’architettura REST</li>
+<li>Creare un progetto REST API da zero</li>
+<li>Progettare modelli ed endpoint</li>
+<li>Lavorare con strutture dati JSON</li>
+<li>Implementare operazioni GET, POST, PUT e DELETE</li>
+<li>Testare le API utilizzando Postman</li>
+<li>Risolvere problemi ed eseguire il debug delle risposte API</li>
+<li>Applicare le migliori pratiche per una progettazione efficiente delle API</li>
+</ul>
+
+<h2 class="section-title">Sviluppo pratico</h2>
+
+<p>
+Questo corso enfatizza l'apprendimento pratico. Invece di discutere solo la teoria,
+lavorerai con esempi reali e costruirai una REST API funzionante passo dopo passo.
+Imparerai come ogni componente interagisce all’interno dell’architettura API.
 </p>
 
 <p>
-Au lieu d'accéder directement à une base de données ou à la logique interne,
-les systèmes externes interagissent avec votre application via des points de terminaison (endpoints) définis.
+Ad esempio, un endpoint potrebbe apparire così:
 </p>
 
 <div class="code-box">
-GET https://api.company.com/products
+GET https://api.yourapplication.com/customers
 </div>
 
 <p>
-Cette requête peut renvoyer une réponse JSON comme :
+Questa richiesta restituirebbe dati JSON strutturati che altri sistemi,
+applicazioni mobili o applicazioni web possono utilizzare.
 </p>
 
-<div class="code-box">
-{
- "id": 1,
- "name": "Laptop",
- "price": 950
-}
-</div>
-
-<h2 class="section-title">Pourquoi les API REST sont importantes</h2>
+<h2 class="section-title">Strumenti che utilizzerai</h2>
 
 <ul>
-<li><strong>Intégration des systèmes :</strong> connecter plusieurs systèmes tels que des applications web, mobiles et des services.</li>
-<li><strong>Scalabilité :</strong> les applications peuvent évoluer indépendamment tout en communiquant via des API.</li>
-<li><strong>Indépendance de la plateforme :</strong> toute technologie capable d’effectuer des requêtes HTTP peut utiliser une API REST.</li>
-<li><strong>Séparation du frontend et du backend :</strong> les développeurs peuvent créer les interfaces utilisateur séparément de la logique serveur.</li>
-<li><strong>Automatisation :</strong> les systèmes peuvent interagir automatiquement sans intervention manuelle.</li>
+<li>Visual Studio per costruire la REST API</li>
+<li>Postman per testare gli endpoint API</li>
+<li>SQL Server per memorizzare e recuperare i dati</li>
+<li>JSON per lo scambio di dati tra sistemi</li>
 </ul>
 
-<h2 class="section-title">Exemples dans le monde réel</h2>
-
-<p>
-Les API REST alimentent de nombreux services modernes que vous utilisez chaque jour :
-</p>
+<h2 class="section-title">Competenze che acquisirai</h2>
 
 <ul>
-<li>Applications mobiles récupérant des données utilisateur depuis des serveurs cloud</li>
-<li>Plateformes de commerce électronique gérant les commandes et les stocks</li>
-<li>Systèmes financiers échangeant des informations de transaction</li>
-<li>Intégrations tierces entre différentes plateformes logicielles</li>
+<li>Costruire REST API utilizzate dalle applicazioni moderne</li>
+<li>Testare e convalidare le risposte delle API</li>
+<li>Eseguire il debug e risolvere problemi delle API</li>
+<li>Progettare API scalabili e facili da mantenere</li>
 </ul>
 
 <p>
-Par exemple, lorsqu'une application mobile de shopping charge les données d’un produit,
-elle envoie généralement une requête à une API REST qui récupère les informations
-depuis une base de données et les renvoie au format JSON.
+Queste competenze sono ampiamente utilizzate nello sviluppo backend,
+nei servizi cloud, nello sviluppo di applicazioni mobili e nelle integrazioni di sistemi.
 </p>
-
-<h2 class="section-title">Ce que vous apprendrez dans ce cours</h2>
-
-<p>
-Tout au long de ce cours, vous apprendrez à concevoir, construire, tester et dépanner
-des API REST à l’aide d’exemples pratiques. Les sujets incluent :
-</p>
-
-<ul>
-<li>Les bases de HTTP</li>
-<li>La création d’endpoints API</li>
-<li>Le travail avec les données JSON</li>
-<li>L’implémentation des méthodes GET, POST, PUT et DELETE</li>
-<li>Le test des API avec Postman</li>
-<li>Le dépannage et l’optimisation des performances des API REST</li>
-</ul>
-
-<p>
-À la fin du cours, vous comprendrez comment créer des API robustes
-qui alimentent les applications modernes et les intégrations entre systèmes.
-</p>
-
 
 <div class="buttons">
 
@@ -231,17 +217,16 @@ Voir le cours (Français)
 
 </div>
 
-
 <div class="buttons">
 
 <a class="btn curriculum" href="Contenido.html">
-Retour à la page du cours
+Torna alla pagina del corso
 </a>
 
 </div>
 
 <div class="footer">
-Leçon 1 – Cours de développement d’API REST.
+Lezione 2 – Corso di sviluppo REST API.
 </div>
 
 </div>
