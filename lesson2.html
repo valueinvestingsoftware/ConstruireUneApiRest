@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJ43JP9F');</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leçon 1 : Pourquoi utiliser une API REST ?</title>
+
+<style>
+
+body{
+font-family:'Segoe UI',Arial,sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2f7,#dfe7f3);
+color:#2c3e50;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:36px;
+text-align:center;
+margin-bottom:10px;
+color:#1c355e;
+}
+
+.subtitle{
+text-align:center;
+font-size:18px;
+color:#566573;
+margin-bottom:30px;
+}
+
+.section-title{
+font-size:24px;
+margin-top:35px;
+color:#1c355e;
+border-bottom:2px solid #e6ecf5;
+padding-bottom:10px;
+}
+
+p{
+line-height:1.8;
+margin-top:15px;
+}
+
+ul{
+line-height:1.9;
+margin-top:15px;
+}
+
+.code-box{
+background:#f4f6f9;
+padding:15px;
+border-radius:8px;
+font-family:Consolas, monospace;
+margin-top:15px;
+}
+
+.buttons{
+text-align:center;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+margin:10px;
+padding:14px 26px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+color:white;
+transition:0.25s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.english{background:#2c7be5;}
+.portuguese{background:#28a745;}
+.italian{background:#f59e0b;}
+.french{background:#6f42c1;}
+.curriculum{background:#20c997;}
+
+.footer{
+text-align:center;
+margin-top:40px;
+font-size:14px;
+color:#7b8a97;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Leçon 1 : Pourquoi utiliser une API REST ?</h1>
+
+<p class="subtitle">
+Développement d’API REST : Construire, Tester, Dépanner
+</p>
+
+<p>
+Les systèmes logiciels modernes fonctionnent rarement de manière isolée. Les applications doivent souvent
+communiquer avec d'autres systèmes, des applications mobiles, des interfaces web et des services externes.
+C’est là que les <strong>API REST</strong> deviennent essentielles.
+</p>
+
+<h2 class="section-title">Qu'est-ce qu'une API REST ?</h2>
+
+<p>
+Une API REST (Representational State Transfer Application Programming Interface)
+est une méthode standardisée permettant aux applications de communiquer via HTTP.
+Elle permet à différents systèmes d’échanger des données à l’aide de requêtes et de réponses simples,
+généralement formatées en JSON.
+</p>
+
+<p>
+Au lieu d'accéder directement à une base de données ou à la logique interne,
+les systèmes externes interagissent avec votre application via des points de terminaison (endpoints) définis.
+</p>
+
+<div class="code-box">
+GET https://api.company.com/products
+</div>
+
+<p>
+Cette requête peut renvoyer une réponse JSON comme :
+</p>
+
+<div class="code-box">
+{
+ "id": 1,
+ "name": "Laptop",
+ "price": 950
+}
+</div>
+
+<h2 class="section-title">Pourquoi les API REST sont importantes</h2>
+
+<ul>
+<li><strong>Intégration des systèmes :</strong> connecter plusieurs systèmes tels que des applications web, mobiles et des services.</li>
+<li><strong>Scalabilité :</strong> les applications peuvent évoluer indépendamment tout en communiquant via des API.</li>
+<li><strong>Indépendance de la plateforme :</strong> toute technologie capable d’effectuer des requêtes HTTP peut utiliser une API REST.</li>
+<li><strong>Séparation du frontend et du backend :</strong> les développeurs peuvent créer les interfaces utilisateur séparément de la logique serveur.</li>
+<li><strong>Automatisation :</strong> les systèmes peuvent interagir automatiquement sans intervention manuelle.</li>
+</ul>
+
+<h2 class="section-title">Exemples dans le monde réel</h2>
+
+<p>
+Les API REST alimentent de nombreux services modernes que vous utilisez chaque jour :
+</p>
+
+<ul>
+<li>Applications mobiles récupérant des données utilisateur depuis des serveurs cloud</li>
+<li>Plateformes de commerce électronique gérant les commandes et les stocks</li>
+<li>Systèmes financiers échangeant des informations de transaction</li>
+<li>Intégrations tierces entre différentes plateformes logicielles</li>
+</ul>
+
+<p>
+Par exemple, lorsqu'une application mobile de shopping charge les données d’un produit,
+elle envoie généralement une requête à une API REST qui récupère les informations
+depuis une base de données et les renvoie au format JSON.
+</p>
+
+<h2 class="section-title">Ce que vous apprendrez dans ce cours</h2>
+
+<p>
+Tout au long de ce cours, vous apprendrez à concevoir, construire, tester et dépanner
+des API REST à l’aide d’exemples pratiques. Les sujets incluent :
+</p>
+
+<ul>
+<li>Les bases de HTTP</li>
+<li>La création d’endpoints API</li>
+<li>Le travail avec les données JSON</li>
+<li>L’implémentation des méthodes GET, POST, PUT et DELETE</li>
+<li>Le test des API avec Postman</li>
+<li>Le dépannage et l’optimisation des performances des API REST</li>
+</ul>
+
+<p>
+À la fin du cours, vous comprendrez comment créer des API robustes
+qui alimentent les applications modernes et les intégrations entre systèmes.
+</p>
+
+
+<div class="buttons">
+
+<a class="btn english" href="https://www.udemy.com/course/rest-api-development-build-test-troubleshoot/" target="_blank">
+View Course (English)
+</a>
+
+<a class="btn portuguese" href="https://www.udemy.com/course/desenvolvimento-de-api-rest-construir-testar-solucionar/" target="_blank">
+Ver Curso (Português)
+</a>
+
+<a class="btn italian" href="https://www.udemy.com/course/sviluppo-api-rest-costruisci-testa-risolvi/" target="_blank">
+Vedi Corso (Italiano)
+</a>
+
+<a class="btn french" href="https://www.udemy.com/course/developpement-dapi-rest-construire-tester-depanner/" target="_blank">
+Voir le cours (Français)
+</a>
+
+</div>
+
+
+<div class="buttons">
+
+<a class="btn curriculum" href="Contenido.html">
+Retour à la page du cours
+</a>
+
+</div>
+
+<div class="footer">
+Leçon 1 – Cours de développement d’API REST.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
